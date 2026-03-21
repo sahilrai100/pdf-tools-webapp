@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to PDF - Convert JPG PNG to PDF Online | iLovePDF</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><div class="logo-box">P</div><span class="logo-text">i<span>Love</span>PDF</span></a>
+    <nav class="main-nav"><a href="/pages/merge-pdf.html" class="nav-link">MERGE PDF</a><a href="/pages/split-pdf.html" class="nav-link">SPLIT PDF</a><a href="/pages/compress-pdf.html" class="nav-link">COMPRESS PDF</a><a href="/" class="nav-link">ALL PDF TOOLS</a></nav>
+    <div class="header-right"><button class="btn-login">Login</button><button class="btn-signup">Sign up</button></div>
+  </div>
+</header>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>All Tools</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Image to PDF</span></div></div>
+
+<div class="tool-hero">
+  <div class="tool-hero-icon" style="background:#fef3c7;">
+    <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="28" height="22" rx="3" fill="#d97706" opacity="0.2"/><rect x="4" y="10" width="28" height="22" rx="3" stroke="#d97706" stroke-width="2.5"/><circle cx="12" cy="18" r="3" fill="#d97706"/><path d="M4 26 L12 19 L20 23 L26 16 L32 23" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="28" y="20" width="16" height="22" rx="3" fill="#d97706" opacity="0.15"/><rect x="28" y="20" width="16" height="22" rx="3" stroke="#d97706" stroke-width="2.5"/><text x="30" y="36" font-size="10" fill="#d97706" font-weight="bold" font-family="Arial">PDF</text></svg>
+  </div>
+  <h1>Image to PDF</h1>
+  <p>Convert JPG, PNG, and other images to a PDF document. Add multiple images for multi-page PDF.</p>
+</div>
+
+<div class="tool-content">
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">🖼️</span>
+    <h3>Select image files</h3>
+    <p>JPG, PNG, GIF, WebP — multiple images supported</p>
+    <button class="btn btn-primary btn-lg" onclick="event.stopPropagation(); document.getElementById('fileInput').click()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Select Images</button>
+    <p style="margin-top:10px;margin-bottom:0;font-size:0.75rem;color:#9ca3af;">Up to 20 images · Max 50MB each</p>
+    <input type="file" id="fileInput" accept="image/*" multiple>
+    <div class="file-list" id="fileList"></div>
+  </div>
+
+  <div class="options-panel" id="optionsPanel">
+    <div class="options-grid">
+      <div class="form-group"><label>Page Size</label>
+        <select id="pageSize"><option value="auto">Auto (fit image)</option><option value="a4">A4</option><option value="letter">Letter</option><option value="a3">A3</option></select>
+      </div>
+      <div class="form-group"><label>Orientation</label>
+        <select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select>
+      </div>
+      <div class="form-group"><label>Margin</label>
+        <select id="margin"><option value="0">No margin</option><option value="20">Small</option><option value="40">Medium</option><option value="60">Large</option></select>
+      </div>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-primary btn-lg" id="convertBtn">📄 Convert to PDF</button>
+      <button class="btn btn-secondary" id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <div class="progress-section" id="progressSection">
+    <div class="progress-label">Creating your PDF...</div>
+    <div class="progress-bar-wrapper"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <p class="progress-text" id="progressText">Please wait</p>
+  </div>
+
+  <div class="result-section" id="resultSection">
+    <div class="result-check">✅</div>
+    <h3>PDF Created Successfully!</h3>
+    <p>Your PDF is ready to download.</p>
+    <div class="result-actions">
+      <a class="btn btn-primary btn-lg" id="downloadBtn" href="#">⬇️ Download PDF</a>
+      <button class="btn btn-outline" id="convertAgainBtn">Convert More</button>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><div class="footer-brand-box"><div class="logo" style="margin-bottom:10px;"><div class="logo-box">P</div><span class="logo-text">i<span>Love</span>PDF</span></div><p class="footer-desc">Free online PDF tools. Files auto-deleted after 10 minutes.</p></div><div class="footer-col"><h4>Tools</h4><a href="/pages/merge-pdf.html">Merge PDF</a><a href="/pages/split-pdf.html">Split PDF</a><a href="/pages/compress-pdf.html">Compress PDF</a></div><div class="footer-col"><h4>Convert</h4><a href="/pages/pdf-to-word.html">PDF to Word</a><a href="/pages/word-to-pdf.html">Word to PDF</a><a href="/pages/pdf-to-image.html">PDF to Image</a></div><div class="footer-col"><h4>Edit</h4><a href="/pages/rotate-pdf.html">Rotate PDF</a><a href="/pages/watermark-pdf.html">Watermark PDF</a></div></div><div class="footer-bottom">© 2025 iLovePDF Tools</div></footer>
+
+<script src="/js/utils.js"></script><script src="/js/notify.js"></script><script src="/js/upload.js"></script><script src="/js/api.js"></script><script src="/js/progress.js"></script>
+<script>
+  const progress = new ProgressUI('progressSection', 'progressFill', 'progressText');
+  const uploader = new UploadZone({ dropZoneId: 'dropZone', fileInputId: 'fileInput', fileListId: 'fileList', multiple: true, maxFiles: 20, onFilesChanged: (files) => document.getElementById('optionsPanel').classList.toggle('visible', files.length > 0) });
+
+  document.getElementById('convertBtn').addEventListener('click', async () => {
+    const files = uploader.getFiles();
+    if (!files.length) return notify.error('Please select at least one image.');
+    const formData = new FormData();
+    files.forEach(f => formData.append('files', f));
+    formData.append('pageSize', document.getElementById('pageSize').value);
+    formData.append('orientation', document.getElementById('orientation').value);
+    formData.append('margin', document.getElementById('margin').value);
+    document.getElementById('optionsPanel').classList.remove('visible'); document.getElementById('resultSection').classList.remove('visible');
+    progress.indeterminate('Creating PDF...');
+    try {
+      const result = await callApi('/api/image-to-pdf', formData);
+      progress.complete('Done!');
+      setTimeout(() => { progress.hide(); document.getElementById('downloadBtn').href = result.downloadUrl; document.getElementById('resultSection').classList.add('visible'); notify.success('PDF created!'); }, 500);
+    } catch (err) { progress.hide(); document.getElementById('optionsPanel').classList.add('visible'); notify.error(err.message); }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => { uploader.reset(); document.getElementById('optionsPanel').classList.remove('visible'); document.getElementById('resultSection').classList.remove('visible'); });
+  document.getElementById('convertAgainBtn').addEventListener('click', () => { uploader.reset(); document.getElementById('resultSection').classList.remove('visible'); });
+</script>
+</body>
+</html>
