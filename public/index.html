@@ -26,7 +26,7 @@
       <div class="nav-dropdown">
         <a href="#" class="nav-link">
           CONVERT PDF
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 6l4 4 4-4"/></svg>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
         </a>
         <div class="dropdown-menu">
           <a href="/pages/pdf-to-word.html" class="dropdown-item">
@@ -46,15 +46,15 @@
 
       <div class="nav-dropdown">
         <a href="#" class="nav-link">
-          ALL PDF TOOLS
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 6l4 4 4-4"/></svg>
+          ALL TOOLS
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
         </a>
         <div class="dropdown-menu">
           <a href="/pages/rotate-pdf.html" class="dropdown-item">
-            <div class="dropdown-icon" style="background:#d1fae5;">🔄</div> Rotate PDF
+            <div class="dropdown-icon" style="background:#cffafe;">🔄</div> Rotate PDF
           </a>
           <a href="/pages/watermark-pdf.html" class="dropdown-item">
-            <div class="dropdown-icon" style="background:#fef9c3;">💧</div> Watermark PDF
+            <div class="dropdown-icon" style="background:#ede9fe;">💧</div> Watermark PDF
           </a>
         </div>
       </div>
@@ -62,27 +62,33 @@
 
     <div class="header-right">
       <button class="btn-login">Login</button>
-      <button class="btn-signup">Sign up</button>
+      <button class="btn-signup">Sign up free</button>
     </div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Every tool you need to work<br>with PDFs in one place</h1>
-  <p>Every tool you need to use PDFs, at your fingertips. All are 100% FREE and easy to use! Merge, split, compress, convert, rotate and watermark PDFs with just a few clicks.</p>
+  <div class="hero-badge">
+    ✨ <span>100% Free</span> — No signup required
+  </div>
+  <h1>Every PDF tool you need,<br><span class="highlight">all in one place</span></h1>
+  <p>Merge, split, compress, convert, rotate and watermark PDFs in seconds. Powerful tools that work right in your browser.</p>
 
   <div class="category-pills">
-    <button class="pill active" data-filter="all">All</button>
-    <button class="pill" data-filter="organize">Organize PDF</button>
-    <button class="pill" data-filter="optimize">Optimize PDF</button>
-    <button class="pill" data-filter="convert">Convert PDF</button>
-    <button class="pill" data-filter="edit">Edit PDF</button>
+    <button class="pill active" data-filter="all">All Tools</button>
+    <button class="pill" data-filter="organize">Organize</button>
+    <button class="pill" data-filter="optimize">Optimize</button>
+    <button class="pill" data-filter="convert">Convert</button>
+    <button class="pill" data-filter="edit">Edit</button>
   </div>
 </section>
 
 <!-- TOOLS GRID -->
 <section class="tools-section" id="tools">
+  <p class="section-label">PDF Toolkit</p>
+  <h2 class="section-title">Choose a tool to get started</h2>
+
   <div class="tools-grid" id="toolsGrid">
 
     <!-- Merge PDF -->
@@ -99,6 +105,10 @@
       </div>
       <h3>Merge PDF</h3>
       <p>Combine multiple PDFs into one file in the order you want.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- Split PDF -->
@@ -114,6 +124,10 @@
       </div>
       <h3>Split PDF</h3>
       <p>Separate a PDF into multiple files or extract specific pages.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- Compress PDF -->
@@ -129,6 +143,10 @@
       </div>
       <h3>Compress PDF</h3>
       <p>Reduce PDF file size while maintaining maximum quality.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- PDF to Word -->
@@ -146,6 +164,10 @@
       </div>
       <h3>PDF to Word</h3>
       <p>Easily convert your PDF files into easy to edit DOC documents.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- PDF to Image -->
@@ -164,6 +186,10 @@
       </div>
       <h3>PDF to Image</h3>
       <p>Convert every PDF page into JPG or PNG images.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- Image to PDF -->
@@ -182,6 +208,10 @@
       </div>
       <h3>Image to PDF</h3>
       <p>Convert JPG, PNG and other images to PDF documents.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- Word to PDF -->
@@ -199,6 +229,10 @@
       </div>
       <h3>Word to PDF</h3>
       <p>Make DOC and DOCX files easy to read by converting them to PDF.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- Rotate PDF -->
@@ -216,6 +250,10 @@
       </div>
       <h3>Rotate PDF</h3>
       <p>Rotate all or specific pages of your PDF in any direction.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
     <!-- Watermark PDF -->
@@ -232,33 +270,63 @@
       </div>
       <h3>Watermark PDF</h3>
       <p>Stamp an image or text over your PDF to mark it as confidential.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
     </a>
 
   </div>
 </section>
 
+<!-- STATS STRIP -->
+<section class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <strong>9+</strong>
+      <span>PDF Tools Available</span>
+    </div>
+    <div class="stat-item">
+      <strong>100%</strong>
+      <span>Free Forever</span>
+    </div>
+    <div class="stat-item">
+      <strong>10min</strong>
+      <span>Auto File Deletion</span>
+    </div>
+    <div class="stat-item">
+      <strong>0</strong>
+      <span>Signup Required</span>
+    </div>
+  </div>
+</section>
+
 <!-- FEATURES STRIP -->
 <section class="features-strip">
+  <div class="features-header">
+    <h2>Why choose our PDF tools?</h2>
+    <p>Fast, secure, and always free — built for everyone.</p>
+  </div>
   <div class="features-inner">
     <div class="feature-item">
-      <div class="feature-icon" style="background:#fef3c7;">⚡</div>
+      <div class="feature-icon" style="background:linear-gradient(135deg,#fbbf24,#f59e0b);">⚡</div>
       <strong>Lightning Fast</strong>
-      <p>Process your files in seconds with our optimized engine</p>
+      <p>Process your files in seconds with our optimized engine. No waiting.</p>
     </div>
     <div class="feature-item">
-      <div class="feature-icon" style="background:#dcfce7;">🔒</div>
+      <div class="feature-icon" style="background:linear-gradient(135deg,#10b981,#059669);">🔒</div>
       <strong>100% Secure</strong>
-      <p>Files auto-deleted after 10 minutes. No data stored</p>
+      <p>Files are auto-deleted after 10 minutes. Your data never stored.</p>
     </div>
     <div class="feature-item">
-      <div class="feature-icon" style="background:#dbeafe;">☁️</div>
+      <div class="feature-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb);">☁️</div>
       <strong>Works Anywhere</strong>
-      <p>No installation needed. Works in any browser</p>
+      <p>No installation needed. Works in any browser on any device.</p>
     </div>
     <div class="feature-item">
-      <div class="feature-icon" style="background:#fce7f3;">🆓</div>
+      <div class="feature-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">🆓</div>
       <strong>Always Free</strong>
-      <p>No signup required. All tools completely free</p>
+      <p>No credit card, no signup. All 9 tools completely free to use.</p>
     </div>
   </div>
 </section>
@@ -267,7 +335,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand-box">
-      <div class="logo" style="margin-bottom:10px;">
+      <div class="logo" style="margin-bottom:12px;">
         <div class="logo-box">P</div>
         <span class="logo-text">i<span>Love</span>PDF</span>
       </div>
@@ -292,7 +360,9 @@
       <a href="/pages/image-to-pdf.html">Image to PDF</a>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 iLovePDF Tools. All files are auto-deleted after 10 minutes for your privacy.</div>
+  <div class="footer-bottom">
+    © 2025 iLovePDF Tools · All files auto-deleted after 10 minutes for your privacy
+  </div>
 </footer>
 
 <script src="/js/utils.js"></script>
@@ -308,10 +378,16 @@
       pill.classList.add('active');
 
       const filter = pill.dataset.filter;
+      let delay = 0;
       cards.forEach(card => {
         if (filter === 'all' || card.dataset.category === filter) {
           card.style.display = '';
-          card.style.animation = 'fadeIn 0.2s ease';
+          card.style.animationDelay = (delay * 0.05) + 's';
+          card.style.animation = 'none';
+          requestAnimationFrame(() => {
+            card.style.animation = 'cardFadeIn 0.35s ease both';
+          });
+          delay++;
         } else {
           card.style.display = 'none';
         }
@@ -319,10 +395,6 @@
     });
   });
 </script>
-
-<style>
-@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
-</style>
 
 </body>
 </html>
