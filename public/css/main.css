@@ -800,6 +800,88 @@ footer { background: #0a0f1e; color: #9ca3af; padding: 60px 24px 28px; margin-to
   gap: 6px;
 }
 
+/* ===== PAGE TILES (Organize PDF) ===== */
+.page-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.page-tile {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 8px 8px;
+  text-align: center;
+  cursor: grab;
+  transition: var(--transition);
+  position: relative;
+  user-select: none;
+}
+
+.page-tile:active { cursor: grabbing; }
+.page-tile.drag-over { border-color: var(--primary); background: var(--primary-light); transform: scale(1.04); }
+.page-tile.dragging { opacity: 0.4; }
+
+.page-tile-num {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-muted);
+  display: block;
+  line-height: 1;
+}
+
+.page-tile-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+.page-tile-del {
+  position: absolute;
+  top: 4px; right: 4px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  color: #94a3b8;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+  transition: var(--transition);
+}
+
+.page-tile-del:hover { background: var(--primary); color: white; }
+
+/* ===== SIGNATURE CANVAS ===== */
+.signature-wrapper {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: white;
+  position: relative;
+}
+
+.signature-wrapper canvas {
+  display: block;
+  width: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.signature-placeholder {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  pointer-events: none;
+  font-style: italic;
+}
+
 /* ===== RADIO CARDS ===== */
 .radio-card-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
 .radio-card { flex: 1; min-width: 90px; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 10px; text-align: center; cursor: pointer; transition: var(--transition); }
