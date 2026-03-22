@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Page Numbers to PDF - Online Free | iLovePDF</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-box">P</div>
+      <span class="logo-text">i<span>Love</span>PDF</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/pages/merge-pdf.html" class="nav-link">MERGE PDF</a>
+      <a href="/pages/split-pdf.html" class="nav-link">SPLIT PDF</a>
+      <a href="/pages/compress-pdf.html" class="nav-link">COMPRESS PDF</a>
+      <a href="/" class="nav-link">ALL PDF TOOLS</a>
+    </nav>
+    <div class="header-right">
+      <button class="btn-login">Login</button>
+      <button class="btn-signup">Sign up free</button>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/" class="back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      All Tools
+    </a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Add Page Numbers</span>
+  </div>
+</div>
+
+<div class="tool-hero">
+  <div class="tool-hero-icon" style="background:#ede9fe;">
+    <svg viewBox="0 0 48 48" fill="none">
+      <rect x="8" y="6" width="32" height="36" rx="3" fill="#7c3aed" opacity="0.12"/>
+      <rect x="8" y="6" width="32" height="36" rx="3" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="14" y1="16" x2="34" y2="16" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <line x1="14" y1="22" x2="34" y2="22" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <line x1="14" y1="28" x2="26" y2="28" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <rect x="16" y="34" width="16" height="5" rx="2" fill="#7c3aed" opacity="0.25"/>
+      <text x="24" y="38.5" text-anchor="middle" font-size="4" fill="#7c3aed" font-family="Arial" font-weight="bold">1 / 5</text>
+    </svg>
+  </div>
+  <h1>Add Page Numbers</h1>
+  <p>Automatically add page numbers to every page of your PDF. Choose position, format, and starting number.</p>
+</div>
+
+<div class="tool-content">
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">📂</span>
+    <h3>Select a PDF file</h3>
+    <p>or drag and drop a PDF here</p>
+    <button class="btn btn-primary btn-lg" onclick="event.stopPropagation(); document.getElementById('fileInput').click()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Select PDF File
+    </button>
+    <p style="margin-top:10px;margin-bottom:0;font-size:0.75rem;color:#9ca3af;">Max 100MB</p>
+    <input type="file" id="fileInput" accept=".pdf,application/pdf">
+    <div class="file-list" id="fileList"></div>
+  </div>
+
+  <div class="options-panel" id="optionsPanel">
+    <div class="options-grid">
+      <div class="form-group">
+        <label for="position">Position</label>
+        <select id="position">
+          <option value="bottom-center">Bottom Center</option>
+          <option value="bottom-right">Bottom Right</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="top-center">Top Center</option>
+          <option value="top-right">Top Right</option>
+          <option value="top-left">Top Left</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="format">Number Format</label>
+        <select id="format">
+          <option value="numeric">Numeric (1, 2, 3...)</option>
+          <option value="page-n">Page N (Page 1, Page 2...)</option>
+          <option value="of-total">N of Total (1 of 10, 2 of 10...)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="startNumber">Start Number</label>
+        <input type="number" id="startNumber" value="1" min="1" max="9999">
+      </div>
+      <div class="form-group">
+        <label for="fontSize">Font Size</label>
+        <select id="fontSize">
+          <option value="10">10pt</option>
+          <option value="12" selected>12pt</option>
+          <option value="14">14pt</option>
+          <option value="16">16pt</option>
+        </select>
+      </div>
+    </div>
+    <div class="action-bar">
+      <button class="btn btn-primary btn-lg" id="convertBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Add Page Numbers
+      </button>
+      <button class="btn btn-secondary" id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <div class="progress-section" id="progressSection">
+    <div class="progress-label">Adding page numbers...</div>
+    <div class="progress-bar-wrapper"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <p class="progress-text" id="progressText">Please wait</p>
+  </div>
+
+  <div class="result-section" id="resultSection">
+    <div class="result-check">✅</div>
+    <h3>Page Numbers Added!</h3>
+    <p>Your PDF now has page numbers on every page.</p>
+    <div class="result-actions">
+      <a class="btn btn-primary btn-lg" id="downloadBtn" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+      <button class="btn btn-outline" id="convertAgainBtn">Number Another</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-box">
+      <div class="logo" style="margin-bottom:10px;"><div class="logo-box">P</div><span class="logo-text">i<span>Love</span>PDF</span></div>
+      <p class="footer-desc">Free online PDF tools. Files auto-deleted after 10 minutes.</p>
+    </div>
+    <div class="footer-col"><h4>Tools</h4><a href="/pages/merge-pdf.html">Merge PDF</a><a href="/pages/split-pdf.html">Split PDF</a><a href="/pages/compress-pdf.html">Compress PDF</a></div>
+    <div class="footer-col"><h4>Convert</h4><a href="/pages/pdf-to-word.html">PDF to Word</a><a href="/pages/word-to-pdf.html">Word to PDF</a><a href="/pages/pdf-to-image.html">PDF to Image</a></div>
+    <div class="footer-col"><h4>Edit</h4><a href="/pages/rotate-pdf.html">Rotate PDF</a><a href="/pages/watermark-pdf.html">Watermark PDF</a></div>
+  </div>
+  <div class="footer-bottom">© 2025 iLovePDF Tools</div>
+</footer>
+
+<script src="/js/utils.js"></script>
+<script src="/js/notify.js"></script>
+<script src="/js/upload.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/progress.js"></script>
+<script>
+  const progress = new ProgressUI('progressSection', 'progressFill', 'progressText');
+  const uploader = new UploadZone({
+    dropZoneId: 'dropZone',
+    fileInputId: 'fileInput',
+    fileListId: 'fileList',
+    accept: '.pdf',
+    multiple: false,
+    onFilesChanged: (files) => {
+      document.getElementById('optionsPanel').classList.toggle('visible', files.length > 0);
+    }
+  });
+
+  document.getElementById('convertBtn').addEventListener('click', async () => {
+    const files = uploader.getFiles();
+    if (!files.length) return notify.error('Please select a PDF file.');
+
+    const formData = new FormData();
+    formData.append('file', files[0]);
+    formData.append('position', document.getElementById('position').value);
+    formData.append('format', document.getElementById('format').value);
+    formData.append('startNumber', document.getElementById('startNumber').value || '1');
+    formData.append('fontSize', document.getElementById('fontSize').value);
+
+    document.getElementById('optionsPanel').classList.remove('visible');
+    document.getElementById('resultSection').classList.remove('visible');
+    progress.indeterminate('Adding page numbers...');
+    try {
+      const result = await callApi('/api/page-numbers', formData, (pct) => progress.update(pct, `Uploading... ${pct}%`));
+      progress.complete('Done!');
+      setTimeout(() => {
+        progress.hide();
+        document.getElementById('downloadBtn').href = result.downloadUrl;
+        document.getElementById('resultSection').classList.add('visible');
+        notify.success('Page numbers added!');
+      }, 500);
+    } catch (err) {
+      progress.hide();
+      document.getElementById('optionsPanel').classList.add('visible');
+      notify.error(err.message);
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    uploader.reset();
+    document.getElementById('optionsPanel').classList.remove('visible');
+    document.getElementById('resultSection').classList.remove('visible');
+  });
+
+  document.getElementById('convertAgainBtn').addEventListener('click', () => {
+    uploader.reset();
+    document.getElementById('resultSection').classList.remove('visible');
+  });
+</script>
+</body>
+</html>

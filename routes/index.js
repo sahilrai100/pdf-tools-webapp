@@ -16,6 +16,11 @@ const imageToPdfController = require('../controllers/imageToPdfController');
 const pdfToImageController = require('../controllers/pdfToImageController');
 const wordToPdfController = require('../controllers/wordToPdfController');
 const pdfToWordController = require('../controllers/pdfToWordController');
+const protectPdfController = require('../controllers/protectPdfController');
+const unlockPdfController = require('../controllers/unlockPdfController');
+const pageNumberController = require('../controllers/pageNumberController');
+const organizePdfController = require('../controllers/organizePdfController');
+const signPdfController = require('../controllers/signPdfController');
 
 // Merge PDF - multiple PDF files
 router.post('/merge', pdfUpload.array('files', 20), mergePdfController.merge);
@@ -40,6 +45,37 @@ router.post('/word-to-pdf', wordUpload.single('file'), wordToPdfController.conve
 
 // PDF to Word - single PDF
 router.post('/pdf-to-word', pdfUpload.single('file'), pdfToWordController.convert);
+
+// Protect PDF - single PDF
+router.post('/protect', pdfUpload.single('file'), protectPdfController.protect);
+
+// Unlock PDF - single PDF
+router.post('/unlock', pdfUpload.single('file'), unlockPdfController.unlock);
+
+// Add Page Numbers - single PDF
+router.post('/page-numbers', pdfUpload.single('file'), pageNumberController.pageNumber);
+
+// Organize PDF - no file upload (file already in uploads/ from /pdf-info)
+router.post('/organize', organizePdfController.organize);
+
+// Sign PDF - single PDF
+router.post('/sign', pdfUpload.single('file'), signPdfController.sign);
+
+// PDF Info - get page count, stores file in uploads for organize workflow
+router.post('/pdf-info', pdfUpload.single('file'), async (req, res, next) => {
+  const { PDFDocument } = require('pdf-lib');
+  const fs = require('fs');
+  try {
+    if (!req.file) return res.status(400).json({ success: false, error: 'No file' });
+    const bytes = fs.readFileSync(req.file.path);
+    const doc = await PDFDocument.load(bytes);
+    const pageCount = doc.getPageCount();
+    // Do not delete - file is kept for the subsequent /organize call
+    res.json({ success: true, pageCount, filename: req.file.filename });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // Watermark PDF - PDF + optional image
 const watermarkStorage = multer.diskStorage({

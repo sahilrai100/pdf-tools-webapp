@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organize PDF - Reorder & Delete Pages Online Free | iLovePDF</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .pages-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 18px 0 24px;
+      min-height: 80px;
+    }
+    .page-tile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 110px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      cursor: grab;
+      user-select: none;
+      transition: box-shadow 0.15s, border-color 0.15s, opacity 0.15s;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .page-tile:active { cursor: grabbing; }
+    .page-tile.dragging { opacity: 0.4; border-color: #0891b2; }
+    .page-tile.drag-over { border-color: #0891b2; box-shadow: 0 0 0 3px rgba(8,145,178,0.18); }
+    .page-tile svg.page-icon { margin-bottom: 6px; }
+    .page-tile .page-label { font-size: 0.78rem; color: var(--text); font-weight: 600; }
+    .page-tile .page-sublabel { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
+    .page-tile .delete-tile-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: none;
+      background: #f87171;
+      color: #fff;
+      font-size: 0.75rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      opacity: 0.85;
+      transition: opacity 0.15s, background 0.15s;
+    }
+    .page-tile .delete-tile-btn:hover { background: #ef4444; opacity: 1; }
+    .pages-area-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .pages-empty-msg {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+    }
+    #pagesSection { display: none; }
+    #pagesSection.visible { display: block; }
+    .uploading-info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: none;
+    }
+    .uploading-info.visible { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-box">P</div>
+      <span class="logo-text">i<span>Love</span>PDF</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/pages/merge-pdf.html" class="nav-link">MERGE PDF</a>
+      <a href="/pages/split-pdf.html" class="nav-link">SPLIT PDF</a>
+      <a href="/pages/compress-pdf.html" class="nav-link">COMPRESS PDF</a>
+      <a href="/" class="nav-link">ALL PDF TOOLS</a>
+    </nav>
+    <div class="header-right">
+      <button class="btn-login">Login</button>
+      <button class="btn-signup">Sign up free</button>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/" class="back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      All Tools
+    </a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Organize PDF</span>
+  </div>
+</div>
+
+<div class="tool-hero">
+  <div class="tool-hero-icon" style="background:#cffafe;">
+    <svg viewBox="0 0 48 48" fill="none">
+      <rect x="6" y="8" width="16" height="20" rx="2.5" fill="#0891b2" opacity="0.15"/>
+      <rect x="6" y="8" width="16" height="20" rx="2.5" stroke="#0891b2" stroke-width="2.5"/>
+      <rect x="26" y="8" width="16" height="20" rx="2.5" fill="#0891b2" opacity="0.15"/>
+      <rect x="26" y="8" width="16" height="20" rx="2.5" stroke="#0891b2" stroke-width="2.5"/>
+      <rect x="6" y="32" width="16" height="8" rx="2.5" fill="#0891b2" opacity="0.15"/>
+      <rect x="6" y="32" width="16" height="8" rx="2.5" stroke="#0891b2" stroke-width="2.5"/>
+      <rect x="26" y="32" width="16" height="8" rx="2.5" fill="#0891b2" opacity="0.15"/>
+      <rect x="26" y="32" width="16" height="8" rx="2.5" stroke="#0891b2" stroke-width="2.5"/>
+    </svg>
+  </div>
+  <h1>Organize PDF</h1>
+  <p>Reorder or delete pages in your PDF. Drag tiles to rearrange, click the X button to remove a page.</p>
+</div>
+
+<div class="tool-content">
+
+  <div class="drop-zone" id="dropZone">
+    <span class="drop-zone-icon">📂</span>
+    <h3>Select a PDF file</h3>
+    <p>or drag and drop a PDF here</p>
+    <button class="btn btn-primary btn-lg" onclick="event.stopPropagation(); document.getElementById('fileInput').click()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Select PDF File
+    </button>
+    <p style="margin-top:10px;margin-bottom:0;font-size:0.75rem;color:#9ca3af;">Max 100MB</p>
+    <input type="file" id="fileInput" accept=".pdf,application/pdf">
+    <div class="file-list" id="fileList"></div>
+  </div>
+
+  <div id="pagesSection">
+    <p class="uploading-info" id="uploadingInfo">Analyzing PDF pages...</p>
+    <div class="options-panel visible" id="optionsPanel" style="display:block;">
+      <p class="pages-area-label">Drag to reorder pages · Click × to delete a page</p>
+      <div class="pages-area" id="pagesArea"></div>
+      <div class="action-bar">
+        <button class="btn btn-primary btn-lg" id="convertBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+          Apply Changes
+        </button>
+        <button class="btn btn-secondary" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-section" id="progressSection">
+    <div class="progress-label">Organizing your PDF...</div>
+    <div class="progress-bar-wrapper"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <p class="progress-text" id="progressText">Please wait</p>
+  </div>
+
+  <div class="result-section" id="resultSection">
+    <div class="result-check">✅</div>
+    <h3>PDF Organized!</h3>
+    <p>Your PDF pages have been rearranged successfully.</p>
+    <div class="result-actions">
+      <a class="btn btn-primary btn-lg" id="downloadBtn" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+      <button class="btn btn-outline" id="convertAgainBtn">Organize Another</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-box">
+      <div class="logo" style="margin-bottom:10px;"><div class="logo-box">P</div><span class="logo-text">i<span>Love</span>PDF</span></div>
+      <p class="footer-desc">Free online PDF tools. Files auto-deleted after 10 minutes.</p>
+    </div>
+    <div class="footer-col"><h4>Tools</h4><a href="/pages/merge-pdf.html">Merge PDF</a><a href="/pages/split-pdf.html">Split PDF</a><a href="/pages/compress-pdf.html">Compress PDF</a></div>
+    <div class="footer-col"><h4>Convert</h4><a href="/pages/pdf-to-word.html">PDF to Word</a><a href="/pages/word-to-pdf.html">Word to PDF</a><a href="/pages/pdf-to-image.html">PDF to Image</a></div>
+    <div class="footer-col"><h4>Edit</h4><a href="/pages/rotate-pdf.html">Rotate PDF</a><a href="/pages/watermark-pdf.html">Watermark PDF</a></div>
+  </div>
+  <div class="footer-bottom">© 2025 iLovePDF Tools</div>
+</footer>
+
+<script src="/js/utils.js"></script>
+<script src="/js/notify.js"></script>
+<script src="/js/upload.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/progress.js"></script>
+<script>
+  const progress = new ProgressUI('progressSection', 'progressFill', 'progressText');
+
+  let uploadedFilename = null;  // filename stored on server after /pdf-info upload
+  let dragSrcIndex = null;
+
+  const pagesArea = document.getElementById('pagesArea');
+  const pagesSection = document.getElementById('pagesSection');
+  const uploadingInfo = document.getElementById('uploadingInfo');
+
+  const uploader = new UploadZone({
+    dropZoneId: 'dropZone',
+    fileInputId: 'fileInput',
+    fileListId: 'fileList',
+    accept: '.pdf',
+    multiple: false,
+    onFilesChanged: async (files) => {
+      if (!files.length) {
+        pagesSection.classList.remove('visible');
+        pagesSection.style.display = 'none';
+        uploadedFilename = null;
+        return;
+      }
+      // Upload file to /api/pdf-info to get page count
+      uploadingInfo.classList.add('visible');
+      pagesSection.style.display = 'block';
+      pagesArea.innerHTML = '';
+      try {
+        const formData = new FormData();
+        formData.append('file', files[0]);
+        const resp = await fetch('/api/pdf-info', { method: 'POST', body: formData });
+        const data = await resp.json();
+        if (!data.success) throw new Error(data.error || 'Failed to read PDF');
+        uploadedFilename = data.filename;
+        uploadingInfo.classList.remove('visible');
+        renderTiles(data.pageCount);
+      } catch (err) {
+        uploadingInfo.classList.remove('visible');
+        pagesSection.style.display = 'none';
+        notify.error('Could not read PDF: ' + err.message);
+        uploader.reset();
+      }
+    }
+  });
+
+  function renderTiles(count) {
+    pagesArea.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      pagesArea.appendChild(createTile(i, count));
+    }
+    if (count === 0) {
+      pagesArea.innerHTML = '<p class="pages-empty-msg">No pages left. Reset and try again.</p>';
+    }
+  }
+
+  function createTile(zeroIndex, total) {
+    const tile = document.createElement('div');
+    tile.className = 'page-tile';
+    tile.draggable = true;
+    tile.dataset.index = zeroIndex;
+
+    tile.innerHTML = `
+      <svg class="page-icon" width="32" height="38" viewBox="0 0 32 38" fill="none">
+        <rect x="1" y="1" width="30" height="36" rx="3" fill="#e0f2fe" stroke="#0891b2" stroke-width="1.5"/>
+        <line x1="7" y1="12" x2="25" y2="12" stroke="#0891b2" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        <line x1="7" y1="17" x2="25" y2="17" stroke="#0891b2" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        <line x1="7" y1="22" x2="18" y2="22" stroke="#0891b2" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <span class="page-label">Page ${zeroIndex + 1}</span>
+      <button class="delete-tile-btn" title="Remove this page">×</button>
+    `;
+
+    tile.querySelector('.delete-tile-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      tile.remove();
+      const remaining = pagesArea.querySelectorAll('.page-tile');
+      if (remaining.length === 0) {
+        pagesArea.innerHTML = '<p class="pages-empty-msg">No pages remaining. Reset to start over.</p>';
+      }
+    });
+
+    // Drag events
+    tile.addEventListener('dragstart', (e) => {
+      dragSrcIndex = Array.from(pagesArea.querySelectorAll('.page-tile')).indexOf(tile);
+      tile.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    tile.addEventListener('dragend', () => {
+      tile.classList.remove('dragging');
+      pagesArea.querySelectorAll('.page-tile').forEach(t => t.classList.remove('drag-over'));
+    });
+    tile.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      pagesArea.querySelectorAll('.page-tile').forEach(t => t.classList.remove('drag-over'));
+      tile.classList.add('drag-over');
+    });
+    tile.addEventListener('drop', (e) => {
+      e.preventDefault();
+      tile.classList.remove('drag-over');
+      const tiles = Array.from(pagesArea.querySelectorAll('.page-tile'));
+      const destIndex = tiles.indexOf(tile);
+      if (dragSrcIndex === null || dragSrcIndex === destIndex) return;
+      const srcTile = tiles[dragSrcIndex];
+      if (dragSrcIndex < destIndex) {
+        pagesArea.insertBefore(srcTile, tile.nextSibling);
+      } else {
+        pagesArea.insertBefore(srcTile, tile);
+      }
+      dragSrcIndex = null;
+    });
+
+    return tile;
+  }
+
+  document.getElementById('convertBtn').addEventListener('click', async () => {
+    if (!uploadedFilename) return notify.error('Please select a PDF file first.');
+    const tiles = Array.from(pagesArea.querySelectorAll('.page-tile'));
+    if (tiles.length === 0) return notify.error('No pages selected. Please keep at least one page.');
+    const pageOrder = tiles.map(t => parseInt(t.dataset.index));
+
+    pagesSection.style.display = 'none';
+    document.getElementById('resultSection').classList.remove('visible');
+    progress.indeterminate('Organizing PDF...');
+    try {
+      const resp = await fetch('/api/organize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: uploadedFilename, pageOrder }),
+      });
+      const data = await resp.json();
+      if (!data.success) throw new Error(data.error || 'Failed to organize PDF');
+      progress.complete('Done!');
+      setTimeout(() => {
+        progress.hide();
+        document.getElementById('downloadBtn').href = data.downloadUrl;
+        document.getElementById('resultSection').classList.add('visible');
+        notify.success('PDF organized successfully!');
+      }, 500);
+    } catch (err) {
+      progress.hide();
+      pagesSection.style.display = 'block';
+      notify.error(err.message);
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    uploader.reset();
+    pagesSection.style.display = 'none';
+    pagesArea.innerHTML = '';
+    uploadedFilename = null;
+    document.getElementById('resultSection').classList.remove('visible');
+  });
+
+  document.getElementById('convertAgainBtn').addEventListener('click', () => {
+    uploader.reset();
+    pagesSection.style.display = 'none';
+    pagesArea.innerHTML = '';
+    uploadedFilename = null;
+    document.getElementById('resultSection').classList.remove('visible');
+  });
+</script>
+</body>
+</html>
