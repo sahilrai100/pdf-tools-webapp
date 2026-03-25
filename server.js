@@ -3,10 +3,15 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const config = require('./config/config');
+const { connectDB } = require('./config/db');
 const { ensureDirs } = require('./utils/fileUtils');
 const { startCleaner } = require('./middleware/fileCleaner');
 const errorHandler = require('./middleware/errorHandler');
 const apiRoutes = require('./routes/index');
+const authRoutes = require('./routes/auth');
+
+// Connect to MongoDB
+connectDB();
 
 // Ensure upload/output directories exist
 ensureDirs();
@@ -19,6 +24,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve static frontend
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Auth routes
+app.use('/api/auth', authRoutes);
 
 // API routes
 app.use('/api', apiRoutes);

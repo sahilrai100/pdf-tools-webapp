@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compress PDF - Reduce PDF File Size Online | PDFSpark</title>
+  <title>HTML to PDF - Convert Webpage to PDF | PDFSpark</title>
   <link rel="stylesheet" href="/css/main.css">
+  <style>
+    :root { --card-accent: #2563eb; }
+    .url-input-group { display:flex; gap:12px; max-width:600px; margin:0 auto; flex-wrap:wrap; }
+    .url-input-group input[type="url"] {
+      flex:1; min-width:0; padding:14px 18px; font-size:1rem; border:2px solid #e5e7eb;
+      border-radius:12px; outline:none; transition:border-color .2s, box-shadow .2s;
+      font-family:inherit; background:#fff; color:#1e293b;
+    }
+    .url-input-group input[type="url"]:focus { border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,0.13); }
+    .url-input-group input[type="url"]::placeholder { color:#9ca3af; }
+  </style>
 </head>
 <body>
 
@@ -14,77 +25,54 @@
     <nav class="main-nav">
       <a href="/pages/merge-pdf.html" class="nav-link">MERGE PDF</a>
       <a href="/pages/split-pdf.html" class="nav-link">SPLIT PDF</a>
-      <a href="/pages/compress-pdf.html" class="nav-link active">COMPRESS PDF</a>
+      <a href="/pages/compress-pdf.html" class="nav-link">COMPRESS PDF</a>
       <a href="/" class="nav-link">ALL PDF TOOLS</a>
     </nav>
     <div class="header-right"><button class="btn-login" id="loginBtn">Login</button><button class="btn-signup" id="signupBtn">Sign up</button><div class="user-menu" id="userMenu" style="display:none;"><div class="user-avatar" id="userAvatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><span class="user-name" id="userName"></span><button class="btn-logout" id="logoutBtn">Logout</button></div></div>
   </div>
 </header>
-<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>All Tools</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Compress PDF</span></div></div>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>All Tools</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">HTML to PDF</span></div></div>
 
 <div class="tool-hero">
-  <div class="tool-hero-icon" style="background:#dcfce7;">
-    <svg viewBox="0 0 48 48" fill="none"><rect x="10" y="4" width="28" height="36" rx="3" fill="#16a34a" opacity="0.15"/><rect x="10" y="4" width="28" height="36" rx="3" stroke="#16a34a" stroke-width="2.5"/><path d="M24 12 L24 30" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/><path d="M16 22 L24 30 L32 22" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="15" y1="36" x2="33" y2="36" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/></svg>
+  <div class="tool-hero-icon" style="background:#dbeafe;">
+    <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="36" height="32" rx="4" fill="#2563eb" opacity="0.15"/><rect x="6" y="8" width="36" height="32" rx="4" stroke="#2563eb" stroke-width="2.5"/><text x="24" y="21" text-anchor="middle" font-size="7" font-weight="bold" fill="#2563eb" font-family="monospace">&lt;/&gt;</text><line x1="14" y1="28" x2="34" y2="28" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/><line x1="14" y1="33" x2="28" y2="33" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/></svg>
   </div>
-  <h1>Compress PDF</h1>
-  <p>Reduce file size while optimizing for maximal PDF quality.</p>
+  <h1>HTML to PDF</h1>
+  <p>Convert any webpage to PDF by entering its URL.</p>
 </div>
 
 <div class="tool-content">
 
-  <div class="drop-zone" id="dropZone">
-    <span class="drop-zone-icon">📂</span>
-    <h3>Select a PDF file</h3>
-    <p>or drag and drop a PDF here</p>
-    <button class="btn btn-primary btn-lg" onclick="event.stopPropagation(); document.getElementById('fileInput').click()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      Select PDF File
-    </button>
-    <p style="margin-top:10px;margin-bottom:0;font-size:0.75rem;color:#9ca3af;">Max 100MB</p>
-    <input type="file" id="fileInput" accept=".pdf,application/pdf">
-    <div class="file-list" id="fileList"></div>
+  <div class="drop-zone" id="dropZone" style="cursor:default;">
+    <span class="drop-zone-icon">🌐</span>
+    <h3>Enter a webpage URL</h3>
+    <p>Paste the full URL of the page you want to convert</p>
+    <div class="url-input-group" style="margin-top:16px;">
+      <input type="url" id="urlInput" placeholder="https://example.com" required />
+    </div>
+    <p style="margin-top:10px;margin-bottom:0;font-size:0.75rem;color:#9ca3af;">Public URLs only</p>
   </div>
 
-  <div class="options-panel" id="optionsPanel">
-    <div class="form-group" style="margin-bottom:20px;">
-      <label>Compression Level</label>
-      <div class="radio-card-group">
-        <label class="radio-card">
-          <input type="radio" name="quality" value="low">
-          <span class="radio-card-title">🔥 Maximum</span>
-          <span class="radio-card-desc">Smallest file size</span>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="quality" value="medium" checked>
-          <span class="radio-card-title">⚖️ Recommended</span>
-          <span class="radio-card-desc">Good balance</span>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="quality" value="high">
-          <span class="radio-card-title">💎 Less</span>
-          <span class="radio-card-desc">Better quality</span>
-        </label>
-      </div>
-    </div>
+  <div class="options-panel visible" id="optionsPanel">
     <div class="action-bar">
-      <button class="btn btn-primary btn-lg" id="convertBtn">🗜️ Compress PDF</button>
+      <button class="btn btn-primary btn-lg" id="convertBtn">🌐 Convert to PDF</button>
       <button class="btn btn-secondary" id="resetBtn">Reset</button>
     </div>
   </div>
 
   <div class="progress-section" id="progressSection">
-    <div class="progress-label">Compressing your PDF...</div>
+    <div class="progress-label">Converting webpage to PDF...</div>
     <div class="progress-bar-wrapper"><div class="progress-bar-fill" id="progressFill"></div></div>
     <p class="progress-text" id="progressText">Please wait</p>
   </div>
 
   <div class="result-section" id="resultSection">
     <div class="result-check">✅</div>
-    <h3>PDF Compressed Successfully!</h3>
-    <p>Your compressed PDF is ready to download.</p>
+    <h3>Webpage Converted Successfully!</h3>
+    <p>Your PDF is ready to download.</p>
     <div class="result-actions">
-      <a class="btn btn-primary btn-lg" id="downloadBtn" href="#">⬇️ Download Compressed PDF</a>
-      <button class="btn btn-outline" id="convertAgainBtn">Compress Another</button>
+      <a class="btn btn-primary btn-lg" id="downloadBtn" href="#">⬇️ Download PDF</a>
+      <button class="btn btn-outline" id="convertAgainBtn">Convert Another</button>
     </div>
   </div>
 
@@ -103,27 +91,52 @@
 <script src="/js/utils.js"></script><script src="/js/notify.js"></script><script src="/js/upload.js"></script><script src="/js/api.js"></script><script src="/js/progress.js"></script>
 <script>
   const progress = new ProgressUI('progressSection', 'progressFill', 'progressText');
-  const uploader = new UploadZone({ dropZoneId: 'dropZone', fileInputId: 'fileInput', fileListId: 'fileList', multiple: false, onFilesChanged: (files) => document.getElementById('optionsPanel').classList.toggle('visible', files.length > 0) });
+
+  function isValidUrl(string) {
+    try { const u = new URL(string); return u.protocol === 'http:' || u.protocol === 'https:'; }
+    catch (_) { return false; }
+  }
 
   document.getElementById('convertBtn').addEventListener('click', async () => {
-    const files = uploader.getFiles();
-    if (!files.length) return notify.error('Please select a PDF file.');
-    const quality = document.querySelector('input[name="quality"]:checked').value;
-    const formData = new FormData();
-    formData.append('file', files[0]);
-    formData.append('quality', quality);
+    const url = document.getElementById('urlInput').value.trim();
+    if (!url) return notify.error('Please enter a URL.');
+    if (!isValidUrl(url)) return notify.error('Please enter a valid URL (starting with http:// or https://).');
     document.getElementById('optionsPanel').classList.remove('visible');
     document.getElementById('resultSection').classList.remove('visible');
-    progress.indeterminate('Compressing PDF...');
+    progress.indeterminate('Converting webpage to PDF...');
     try {
-      const result = await callApi('/api/compress', formData);
+      const response = await fetch('/api/html-to-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: url })
+      });
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({ error: 'Conversion failed' }));
+        throw new Error(err.error || 'Conversion failed');
+      }
+      const result = await response.json();
       progress.complete('Done!');
-      setTimeout(() => { progress.hide(); document.getElementById('downloadBtn').href = result.downloadUrl; document.getElementById('resultSection').classList.add('visible'); notify.success('PDF compressed!'); }, 500);
-    } catch (err) { progress.hide(); document.getElementById('optionsPanel').classList.add('visible'); notify.error(err.message); }
+      setTimeout(() => {
+        progress.hide();
+        document.getElementById('downloadBtn').href = result.downloadUrl;
+        document.getElementById('resultSection').classList.add('visible');
+        notify.success('Webpage converted to PDF!');
+      }, 500);
+    } catch (err) {
+      progress.hide();
+      document.getElementById('optionsPanel').classList.add('visible');
+      notify.error(err.message);
+    }
   });
 
-  document.getElementById('resetBtn').addEventListener('click', () => { uploader.reset(); document.getElementById('optionsPanel').classList.remove('visible'); document.getElementById('resultSection').classList.remove('visible'); });
-  document.getElementById('convertAgainBtn').addEventListener('click', () => { uploader.reset(); document.getElementById('resultSection').classList.remove('visible'); });
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    document.getElementById('urlInput').value = '';
+    document.getElementById('resultSection').classList.remove('visible');
+  });
+  document.getElementById('convertAgainBtn').addEventListener('click', () => {
+    document.getElementById('urlInput').value = '';
+    document.getElementById('resultSection').classList.remove('visible');
+  });
 </script>
 <!-- AUTH MODAL -->
 <div class="auth-modal-overlay" id="authModal">

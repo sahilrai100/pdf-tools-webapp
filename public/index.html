@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Tools | Every PDF Tool You Need — Free Online</title>
-  <meta name="description" content="Free online PDF tools. Merge, Split, Compress, Convert PDF files. 100% free and easy to use.">
+  <title>PDFSpark | Every PDF Tool You Need — Free Online</title>
+  <meta name="description" content="Free online PDF tools by PDFSpark. Merge, Split, Compress, Convert PDF files. 100% free and easy to use.">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23e8193c'/><text y='.9em' font-size='65' x='15'>📄</text></svg>">
 </head>
@@ -14,8 +14,8 @@
 <header>
   <div class="header-inner">
     <a href="/" class="logo">
-      <div class="logo-box">P</div>
-      <span class="logo-text">i<span>Love</span>PDF</span>
+      <div class="logo-box">⚡</div>
+      <span class="logo-text">PDF<span>Spark</span></span>
     </a>
 
     <nav class="main-nav">
@@ -42,6 +42,15 @@
           <a href="/pages/image-to-pdf.html" class="dropdown-item">
             <div class="dropdown-icon" style="background:#fef3c7;">📸</div> Image to PDF
           </a>
+          <a href="/pages/pdf-to-excel.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#dcfce7;">📊</div> PDF to Excel
+          </a>
+          <a href="/pages/pdf-to-pptx.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#fee2e2;">📽️</div> PDF to PowerPoint
+          </a>
+          <a href="/pages/html-to-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#e0e7ff;">🌐</div> HTML to PDF
+          </a>
           </div>
         </div>
       </div>
@@ -51,7 +60,7 @@
           ALL TOOLS
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
         </a>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu dropdown-menu-wide">
           <div class="dropdown-menu-inner">
           <a href="/pages/rotate-pdf.html" class="dropdown-item">
             <div class="dropdown-icon" style="background:#cffafe;">🔄</div> Rotate PDF
@@ -59,25 +68,64 @@
           <a href="/pages/watermark-pdf.html" class="dropdown-item">
             <div class="dropdown-icon" style="background:#ede9fe;">💧</div> Watermark PDF
           </a>
+          <a href="/pages/protect-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#dcfce7;">🔒</div> Protect PDF
+          </a>
+          <a href="/pages/unlock-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#fef3c7;">🔓</div> Unlock PDF
+          </a>
+          <a href="/pages/sign-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#fff0f3;">✍️</div> Sign PDF
+          </a>
+          <a href="/pages/edit-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#dbeafe;">✏️</div> Edit PDF
+          </a>
+          <a href="/pages/page-numbers.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#ede9fe;">🔢</div> Page Numbers
+          </a>
+          <a href="/pages/organize-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#cffafe;">📋</div> Organize PDF
+          </a>
+          <a href="/pages/crop-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#fef3c7;">✂️</div> Crop PDF
+          </a>
+          <a href="/pages/repair-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#fee2e2;">🔧</div> Repair PDF
+          </a>
+          <a href="/pages/redact-pdf.html" class="dropdown-item">
+            <div class="dropdown-icon" style="background:#1e1b4b; color:white;">██</div> Redact PDF
+          </a>
           </div>
         </div>
       </div>
     </nav>
 
     <div class="header-right">
-      <button class="btn-login">Login</button>
-      <button class="btn-signup">Sign up free</button>
+      <button class="btn-login" id="loginBtn">Login</button>
+      <button class="btn-signup" id="signupBtn">Sign up free</button>
+      <!-- Logged-in user menu -->
+      <div class="user-menu" id="userMenu" style="display:none;">
+        <div class="user-avatar" id="userAvatar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="user-name" id="userName"></span>
+        <button class="btn-logout" id="logoutBtn">Logout</button>
+      </div>
     </div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
   <div class="hero-badge">
     ✨ <span>100% Free</span> — No signup required
   </div>
   <h1>Every PDF tool you need,<br><span class="highlight">all in one place</span></h1>
-  <p>Merge, split, compress, convert, rotate and watermark PDFs in seconds. Powerful tools that work right in your browser.</p>
+  <p>Merge, split, compress, convert, edit and protect PDFs in seconds. 21 powerful tools that work right in your browser.</p>
 
   <div class="category-pills">
     <button class="pill active" data-filter="all">All Tools</button>
@@ -374,6 +422,174 @@
       </div>
     </a>
 
+    <!-- PDF to Excel -->
+    <a href="/pages/pdf-to-excel.html" class="tool-card" data-category="convert" style="--card-accent:#16a34a; --card-icon-bg:#dcfce7;">
+      <div class="tool-card-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="6" width="22" height="28" rx="3" fill="#e8193c" opacity="0.15" stroke="#e8193c" stroke-width="2"/>
+          <text x="7" y="26" font-size="13" fill="#e8193c" font-weight="bold" font-family="Arial">PDF</text>
+          <path d="M28 20 L36 20 M32 16 L36 20 L32 24" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="36" y="12" width="8" height="22" rx="2" fill="#16a34a" opacity="0.2" stroke="#16a34a" stroke-width="2"/>
+          <text x="37" y="27" font-size="8" fill="#16a34a" font-weight="bold" font-family="Arial">X</text>
+        </svg>
+      </div>
+      <h3>PDF to Excel</h3>
+      <p>Pull data from PDFs into editable Excel spreadsheets.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </a>
+
+    <!-- PDF to PowerPoint -->
+    <a href="/pages/pdf-to-pptx.html" class="tool-card" data-category="convert" style="--card-accent:#ea580c; --card-icon-bg:#fff7ed;">
+      <div class="tool-card-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="6" width="22" height="28" rx="3" fill="#e8193c" opacity="0.15" stroke="#e8193c" stroke-width="2"/>
+          <text x="7" y="26" font-size="13" fill="#e8193c" font-weight="bold" font-family="Arial">PDF</text>
+          <path d="M28 20 L36 20 M32 16 L36 20 L32 24" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="36" y="12" width="8" height="22" rx="2" fill="#ea580c" opacity="0.2" stroke="#ea580c" stroke-width="2"/>
+          <text x="37.5" y="27" font-size="7" fill="#ea580c" font-weight="bold" font-family="Arial">P</text>
+        </svg>
+      </div>
+      <h3>PDF to PowerPoint</h3>
+      <p>Convert PDF pages into editable PPTX presentation slides.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </a>
+
+    <!-- Edit PDF -->
+    <a href="/pages/edit-pdf.html" class="tool-card" data-category="edit" style="--card-accent:#2563eb; --card-icon-bg:#dbeafe;">
+      <div class="tool-card-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="6" width="32" height="36" rx="3" fill="#2563eb" opacity="0.12" stroke="#2563eb" stroke-width="2.5"/>
+          <line x1="14" y1="16" x2="34" y2="16" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+          <line x1="14" y1="22" x2="28" y2="22" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+          <path d="M30 28 L38 20 L42 24 L34 32 L30 32 Z" fill="#2563eb" opacity="0.3" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Edit PDF</h3>
+      <p>Add text, images and shapes to your PDF documents.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </a>
+
+    <!-- HTML to PDF -->
+    <a href="/pages/html-to-pdf.html" class="tool-card" data-category="convert" style="--card-accent:#7c3aed; --card-icon-bg:#ede9fe;">
+      <div class="tool-card-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="22" height="24" rx="3" fill="#7c3aed" opacity="0.15" stroke="#7c3aed" stroke-width="2"/>
+          <text x="6" y="25" font-size="8" fill="#7c3aed" font-weight="bold" font-family="monospace">&lt;/&gt;</text>
+          <path d="M28 20 L36 20 M32 16 L36 20 L32 24" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="36" y="8" width="8" height="24" rx="2" fill="#e8193c" opacity="0.15" stroke="#e8193c" stroke-width="2"/>
+          <text x="37" y="24" font-size="7" fill="#e8193c" font-weight="bold" font-family="Arial">P</text>
+        </svg>
+      </div>
+      <h3>HTML to PDF</h3>
+      <p>Convert any webpage URL into a downloadable PDF document.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </a>
+
+    <!-- Crop PDF -->
+    <a href="/pages/crop-pdf.html" class="tool-card" data-category="edit" style="--card-accent:#0891b2; --card-icon-bg:#cffafe;">
+      <div class="tool-card-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="12" width="24" height="24" rx="2" fill="#0891b2" opacity="0.12" stroke="#0891b2" stroke-width="2.5" stroke-dasharray="4 3"/>
+          <path d="M12 4 L12 12 M4 12 L12 12" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M36 44 L36 36 M44 36 L36 36" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Crop PDF</h3>
+      <p>Crop margins or select specific areas of your PDF pages.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </a>
+
+    <!-- Repair PDF -->
+    <a href="/pages/repair-pdf.html" class="tool-card" data-category="optimize" style="--card-accent:#d97706; --card-icon-bg:#fef3c7;">
+      <div class="tool-card-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="6" width="24" height="32" rx="3" fill="#d97706" opacity="0.15" stroke="#d97706" stroke-width="2.5"/>
+          <path d="M34 22 C34 22 40 28 40 32 C40 34.2 38.2 36 36 36 C33.8 36 32 34.2 32 32 C32 28 38 22 38 22" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="14" y1="16" x2="26" y2="16" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <line x1="14" y1="22" x2="24" y2="22" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Repair PDF</h3>
+      <p>Fix damaged or corrupt PDF files and recover your data.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </a>
+
+    <!-- Redact PDF -->
+    <a href="/pages/redact-pdf.html" class="tool-card" data-category="security" style="--card-accent:#1e1b4b; --card-icon-bg:#e0e7ff;">
+      <div class="tool-card-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="6" width="32" height="36" rx="3" fill="#1e1b4b" opacity="0.1" stroke="#1e1b4b" stroke-width="2.5"/>
+          <line x1="14" y1="16" x2="34" y2="16" stroke="#1e1b4b" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+          <rect x="14" y="21" width="20" height="5" rx="1" fill="#1e1b4b" opacity="0.85"/>
+          <line x1="14" y1="32" x2="30" y2="32" stroke="#1e1b4b" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+        </svg>
+      </div>
+      <h3>Redact PDF</h3>
+      <p>Permanently remove sensitive text and graphics from PDFs.</p>
+      <div class="tool-card-arrow">
+        Get started
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="how-header">
+    <p class="section-label">Simple Process</p>
+    <h2>How it works</h2>
+  </div>
+  <div class="steps-row">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <div class="step-icon-wrap">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <h3>Upload your file</h3>
+      <p>Drag and drop or click to select your PDF, image, or document.</p>
+    </div>
+    <div class="step-connector">
+      <svg width="40" height="16" viewBox="0 0 40 16" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"><path d="M0 8h40"/></svg>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <div class="step-icon-wrap">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      </div>
+      <h3>Choose your tool</h3>
+      <p>Select from 21 tools — merge, convert, compress, edit, and more.</p>
+    </div>
+    <div class="step-connector">
+      <svg width="40" height="16" viewBox="0 0 40 16" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"><path d="M0 8h40"/></svg>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <div class="step-icon-wrap">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <h3>Download result</h3>
+      <p>Your processed file is ready instantly. Download and you're done.</p>
+    </div>
   </div>
 </section>
 
@@ -381,19 +597,19 @@
 <section class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
-      <strong>14+</strong>
+      <strong data-count="21">0</strong>
       <span>PDF Tools Available</span>
     </div>
     <div class="stat-item">
-      <strong>100%</strong>
+      <strong data-count="100" data-suffix="%">0%</strong>
       <span>Free Forever</span>
     </div>
     <div class="stat-item">
-      <strong>10min</strong>
+      <strong data-count="10" data-suffix="min">0min</strong>
       <span>Auto File Deletion</span>
     </div>
     <div class="stat-item">
-      <strong>0</strong>
+      <strong data-count="0" data-label="Zero">Zero</strong>
       <span>Signup Required</span>
     </div>
   </div>
@@ -424,7 +640,7 @@
     <div class="feature-item">
       <div class="feature-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">🆓</div>
       <strong>Always Free</strong>
-      <p>No credit card, no signup. All 14+ tools completely free to use.</p>
+      <p>No credit card, no signup. All 21 tools completely free to use.</p>
     </div>
   </div>
 </section>
@@ -434,8 +650,8 @@
   <div class="footer-inner">
     <div class="footer-brand-box">
       <div class="logo" style="margin-bottom:12px;">
-        <div class="logo-box">P</div>
-        <span class="logo-text">i<span>Love</span>PDF</span>
+        <div class="logo-box">⚡</div>
+        <span class="logo-text"><span>PDF</span>Spark</span>
       </div>
       <p class="footer-desc">Your complete PDF toolkit. Free online tools to merge, split, compress, and convert PDF files. No registration required.</p>
     </div>
@@ -445,26 +661,33 @@
       <a href="/pages/split-pdf.html">Split PDF</a>
       <a href="/pages/organize-pdf.html">Organize PDF</a>
       <a href="/pages/rotate-pdf.html">Rotate PDF</a>
-      <a href="/pages/watermark-pdf.html">Watermark PDF</a>
+      <a href="/pages/compress-pdf.html">Compress PDF</a>
+      <a href="/pages/repair-pdf.html">Repair PDF</a>
       <a href="/pages/page-numbers.html">Page Numbers</a>
     </div>
     <div class="footer-col">
-      <h4>Convert & Optimize</h4>
-      <a href="/pages/compress-pdf.html">Compress PDF</a>
+      <h4>Convert</h4>
       <a href="/pages/pdf-to-word.html">PDF to Word</a>
       <a href="/pages/word-to-pdf.html">Word to PDF</a>
       <a href="/pages/pdf-to-image.html">PDF to Image</a>
       <a href="/pages/image-to-pdf.html">Image to PDF</a>
+      <a href="/pages/pdf-to-excel.html">PDF to Excel</a>
+      <a href="/pages/pdf-to-pptx.html">PDF to PowerPoint</a>
+      <a href="/pages/html-to-pdf.html">HTML to PDF</a>
     </div>
     <div class="footer-col">
-      <h4>Security & Edit</h4>
+      <h4>Edit & Security</h4>
+      <a href="/pages/edit-pdf.html">Edit PDF</a>
+      <a href="/pages/watermark-pdf.html">Watermark PDF</a>
+      <a href="/pages/sign-pdf.html">Sign PDF</a>
+      <a href="/pages/crop-pdf.html">Crop PDF</a>
+      <a href="/pages/redact-pdf.html">Redact PDF</a>
       <a href="/pages/protect-pdf.html">Protect PDF</a>
       <a href="/pages/unlock-pdf.html">Unlock PDF</a>
-      <a href="/pages/sign-pdf.html">Sign PDF</a>
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 iLovePDF Tools · All files auto-deleted after 10 minutes for your privacy
+    © 2026 PDFSpark Tools · All files auto-deleted after 10 minutes for your privacy
   </div>
 </footer>
 
@@ -497,7 +720,119 @@
       });
     });
   });
+
+  // Scroll reveal animations
+  const revealElements = document.querySelectorAll('.how-it-works, .stats-strip, .features-strip, .step-card, .feature-item, .stat-item');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // Counter animation for stats
+  function animateCount(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const label = el.dataset.label;
+    if (label) { el.textContent = label; return; }
+    const duration = 1500;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('[data-count]').forEach(animateCount);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const statsSection = document.querySelector('.stats-strip');
+  if (statsSection) statsObserver.observe(statsSection);
 </script>
 
+<!-- AUTH MODAL -->
+<div class="auth-modal-overlay" id="authModal">
+  <div class="auth-modal">
+    <button class="auth-modal-close" id="modalClose">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="auth-logo">
+      <div class="logo-box" style="width:36px;height:36px;font-size:1rem;">⚡</div>
+      <span class="logo-text" style="font-size:1.2rem;">PDF<span>Spark</span></span>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin">Log In</button>
+      <button class="auth-tab" id="tabSignup">Sign Up</button>
+    </div>
+
+    <p class="auth-error" id="authError"></p>
+
+    <!-- Login Form -->
+    <form class="auth-form" id="loginForm" style="display:flex;">
+      <div class="auth-field">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+        <span class="field-error"></span>
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required autocomplete="current-password" />
+        <span class="field-error"></span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg auth-submit" id="loginSubmitBtn">Log In</button>
+      <p class="auth-switch">Don't have an account? <a href="#" onclick="switchTab('signup'); return false;">Sign up free</a></p>
+    </form>
+
+    <!-- Signup Form -->
+    <form class="auth-form" id="signupForm" style="display:none;">
+      <div class="auth-field">
+        <label>Name</label>
+        <input type="text" id="signupName" placeholder="John Doe" required autocomplete="name" />
+        <span class="field-error"></span>
+      </div>
+      <div class="auth-field">
+        <label>Email</label>
+        <input type="email" id="signupEmail" placeholder="you@example.com" required autocomplete="email" />
+        <span class="field-error"></span>
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="••••••••" required autocomplete="new-password" />
+        <span class="field-error"></span>
+        <!-- Password strength indicator -->
+        <div class="password-requirements" id="passwordRequirements" style="display:none;">
+          <div class="strength-bar-track">
+            <div class="strength-bar-fill" id="strengthBar"></div>
+          </div>
+          <span class="strength-label" id="strengthLabel"></span>
+          <div class="pw-req-list">
+            <span class="pw-req-item unmet"><svg width="12" height="12" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="currentColor"/></svg> 7+ characters</span>
+            <span class="pw-req-item unmet"><svg width="12" height="12" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="currentColor"/></svg> Lowercase (a-z)</span>
+            <span class="pw-req-item unmet"><svg width="12" height="12" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="currentColor"/></svg> Uppercase (A-Z)</span>
+            <span class="pw-req-item unmet"><svg width="12" height="12" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="currentColor"/></svg> Digit (0-9)</span>
+            <span class="pw-req-item unmet"><svg width="12" height="12" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="currentColor"/></svg> Special (!@#$...)</span>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg auth-submit" id="signupSubmitBtn">Create Account</button>
+      <p class="auth-switch">Already have an account? <a href="#" onclick="switchTab('login'); return false;">Log in</a></p>
+    </form>
+  </div>
+</div>
+
+<script src="/js/auth.js"></script>
 </body>
 </html>

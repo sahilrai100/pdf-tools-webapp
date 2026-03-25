@@ -21,6 +21,13 @@ const unlockPdfController = require('../controllers/unlockPdfController');
 const pageNumberController = require('../controllers/pageNumberController');
 const organizePdfController = require('../controllers/organizePdfController');
 const signPdfController = require('../controllers/signPdfController');
+const repairPdfController = require('../controllers/repairPdfController');
+const cropPdfController = require('../controllers/cropPdfController');
+const htmlToPdfController = require('../controllers/htmlToPdfController');
+const pdfToExcelController = require('../controllers/pdfToExcelController');
+const pdfToPptxController = require('../controllers/pdfToPptxController');
+const editPdfController = require('../controllers/editPdfController');
+const redactPdfController = require('../controllers/redactPdfController');
 
 // Merge PDF - multiple PDF files
 router.post('/merge', pdfUpload.array('files', 20), mergePdfController.merge);
@@ -77,6 +84,27 @@ router.post('/pdf-info', pdfUpload.single('file'), async (req, res, next) => {
   }
 });
 
+// Repair PDF - single PDF
+router.post('/repair', pdfUpload.single('file'), repairPdfController.repair);
+
+// Crop PDF - single PDF
+router.post('/crop', pdfUpload.single('file'), cropPdfController.crop);
+
+// HTML to PDF - URL input (no file upload)
+router.post('/html-to-pdf', htmlToPdfController.convert);
+
+// PDF to Excel - single PDF
+router.post('/pdf-to-excel', pdfUpload.single('file'), pdfToExcelController.convert);
+
+// PDF to PowerPoint - single PDF
+router.post('/pdf-to-pptx', pdfUpload.single('file'), pdfToPptxController.convert);
+
+// Edit PDF - single PDF
+router.post('/edit', pdfUpload.single('file'), editPdfController.edit);
+
+// Redact PDF - single PDF
+router.post('/redact', pdfUpload.single('file'), redactPdfController.redact);
+
 // Watermark PDF - PDF + optional image
 const watermarkStorage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, config.uploadDir),
@@ -112,6 +140,8 @@ router.get('/download/:filename', (req, res, next) => {
       '.jpg': 'image/jpeg',
       '.jpeg': 'image/jpeg',
       '.png': 'image/png',
+      '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
     };
 
     const contentType = mimeTypes[ext] || 'application/octet-stream';
