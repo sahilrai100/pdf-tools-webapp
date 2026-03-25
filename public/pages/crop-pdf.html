@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compress PDF - Reduce PDF File Size Online | PDFSpark</title>
+  <title>Crop PDF - Trim PDF Page Margins | PDFSpark</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -14,20 +14,20 @@
     <nav class="main-nav">
       <a href="/pages/merge-pdf.html" class="nav-link">MERGE PDF</a>
       <a href="/pages/split-pdf.html" class="nav-link">SPLIT PDF</a>
-      <a href="/pages/compress-pdf.html" class="nav-link active">COMPRESS PDF</a>
+      <a href="/pages/compress-pdf.html" class="nav-link">COMPRESS PDF</a>
       <a href="/" class="nav-link">ALL PDF TOOLS</a>
     </nav>
     <div class="header-right"><button class="btn-login" id="loginBtn">Login</button><button class="btn-signup" id="signupBtn">Sign up</button><div class="user-menu" id="userMenu" style="display:none;"><div class="user-avatar" id="userAvatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><span class="user-name" id="userName"></span><button class="btn-logout" id="logoutBtn">Logout</button></div></div>
   </div>
 </header>
-<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>All Tools</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Compress PDF</span></div></div>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>All Tools</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Crop PDF</span></div></div>
 
 <div class="tool-hero">
   <div class="tool-hero-icon" style="background:#dcfce7;">
-    <svg viewBox="0 0 48 48" fill="none"><rect x="10" y="4" width="28" height="36" rx="3" fill="#16a34a" opacity="0.15"/><rect x="10" y="4" width="28" height="36" rx="3" stroke="#16a34a" stroke-width="2.5"/><path d="M24 12 L24 30" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/><path d="M16 22 L24 30 L32 22" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="15" y1="36" x2="33" y2="36" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 48 48" fill="none"><path d="M6 16 H16 V6" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 32 H32 V42" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="16" y="16" width="16" height="16" rx="2" fill="#16a34a" opacity="0.15" stroke="#16a34a" stroke-width="2.5"/><line x1="16" y1="6" x2="16" y2="12" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3"/><line x1="6" y1="16" x2="12" y2="16" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3"/><line x1="32" y1="42" x2="32" y2="36" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3"/><line x1="42" y1="32" x2="36" y2="32" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3"/></svg>
   </div>
-  <h1>Compress PDF</h1>
-  <p>Reduce file size while optimizing for maximal PDF quality.</p>
+  <h1>Crop PDF</h1>
+  <p>Crop margins or select specific areas of your PDF pages.</p>
 </div>
 
 <div class="tool-content">
@@ -47,44 +47,33 @@
 
   <div class="options-panel" id="optionsPanel">
     <div class="form-group" style="margin-bottom:20px;">
-      <label>Compression Level</label>
-      <div class="radio-card-group">
-        <label class="radio-card">
-          <input type="radio" name="quality" value="low">
-          <span class="radio-card-title">🔥 Maximum</span>
-          <span class="radio-card-desc">Smallest file size</span>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="quality" value="medium" checked>
-          <span class="radio-card-title">⚖️ Recommended</span>
-          <span class="radio-card-desc">Good balance</span>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="quality" value="high">
-          <span class="radio-card-title">💎 Less</span>
-          <span class="radio-card-desc">Better quality</span>
-        </label>
+      <label>Crop Margins (in points)</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;">
+        <div class="auth-field"><label for="cropTop">Top</label><input type="number" id="cropTop" min="0" value="0" placeholder="0" style="width:100%;padding:8px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;" /></div>
+        <div class="auth-field"><label for="cropBottom">Bottom</label><input type="number" id="cropBottom" min="0" value="0" placeholder="0" style="width:100%;padding:8px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;" /></div>
+        <div class="auth-field"><label for="cropLeft">Left</label><input type="number" id="cropLeft" min="0" value="0" placeholder="0" style="width:100%;padding:8px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;" /></div>
+        <div class="auth-field"><label for="cropRight">Right</label><input type="number" id="cropRight" min="0" value="0" placeholder="0" style="width:100%;padding:8px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;" /></div>
       </div>
     </div>
     <div class="action-bar">
-      <button class="btn btn-primary btn-lg" id="convertBtn">🗜️ Compress PDF</button>
+      <button class="btn btn-primary btn-lg" id="convertBtn">✂️ Crop PDF</button>
       <button class="btn btn-secondary" id="resetBtn">Reset</button>
     </div>
   </div>
 
   <div class="progress-section" id="progressSection">
-    <div class="progress-label">Compressing your PDF...</div>
+    <div class="progress-label">Cropping your PDF...</div>
     <div class="progress-bar-wrapper"><div class="progress-bar-fill" id="progressFill"></div></div>
     <p class="progress-text" id="progressText">Please wait</p>
   </div>
 
   <div class="result-section" id="resultSection">
     <div class="result-check">✅</div>
-    <h3>PDF Compressed Successfully!</h3>
-    <p>Your compressed PDF is ready to download.</p>
+    <h3>PDF Cropped Successfully!</h3>
+    <p>Your cropped PDF is ready to download.</p>
     <div class="result-actions">
-      <a class="btn btn-primary btn-lg" id="downloadBtn" href="#">⬇️ Download Compressed PDF</a>
-      <button class="btn btn-outline" id="convertAgainBtn">Compress Another</button>
+      <a class="btn btn-primary btn-lg" id="downloadBtn" href="#">⬇️ Download Cropped PDF</a>
+      <button class="btn btn-outline" id="convertAgainBtn">Crop Another</button>
     </div>
   </div>
 
@@ -108,17 +97,23 @@
   document.getElementById('convertBtn').addEventListener('click', async () => {
     const files = uploader.getFiles();
     if (!files.length) return notify.error('Please select a PDF file.');
-    const quality = document.querySelector('input[name="quality"]:checked').value;
+    const top = document.getElementById('cropTop').value || '0';
+    const bottom = document.getElementById('cropBottom').value || '0';
+    const left = document.getElementById('cropLeft').value || '0';
+    const right = document.getElementById('cropRight').value || '0';
     const formData = new FormData();
     formData.append('file', files[0]);
-    formData.append('quality', quality);
+    formData.append('top', top);
+    formData.append('bottom', bottom);
+    formData.append('left', left);
+    formData.append('right', right);
     document.getElementById('optionsPanel').classList.remove('visible');
     document.getElementById('resultSection').classList.remove('visible');
-    progress.indeterminate('Compressing PDF...');
+    progress.indeterminate('Cropping PDF...');
     try {
-      const result = await callApi('/api/compress', formData);
+      const result = await callApi('/api/crop', formData);
       progress.complete('Done!');
-      setTimeout(() => { progress.hide(); document.getElementById('downloadBtn').href = result.downloadUrl; document.getElementById('resultSection').classList.add('visible'); notify.success('PDF compressed!'); }, 500);
+      setTimeout(() => { progress.hide(); document.getElementById('downloadBtn').href = result.downloadUrl; document.getElementById('resultSection').classList.add('visible'); notify.success('PDF cropped!'); }, 500);
     } catch (err) { progress.hide(); document.getElementById('optionsPanel').classList.add('visible'); notify.error(err.message); }
   });
 

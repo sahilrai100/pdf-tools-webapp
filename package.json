@@ -1,7 +1,7 @@
 {
-  "name": "pdf-converter",
-  "version": "1.0.0",
-  "description": "Full-featured PDF converter website - Merge, Split, Compress, Convert PDFs",
+  "name": "pdfspark",
+  "version": "2.0.0",
+  "description": "PDFSpark - Free online PDF tools. Merge, Split, Compress, Convert, Edit, Protect and more.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,17 +18,22 @@
   "license": "ISC",
   "dependencies": {
     "archiver": "^7.0.1",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "docx": "^9.6.1",
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
+    "jsonwebtoken": "^9.0.3",
     "mammoth": "^1.12.0",
+    "mongoose": "^9.3.1",
     "multer": "^2.1.1",
     "mupdf": "^1.27.0",
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.18.0",
+    "pptxgenjs": "^4.0.1",
     "sharp": "^0.33.5",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "xlsx": "^0.18.5"
   }
 }

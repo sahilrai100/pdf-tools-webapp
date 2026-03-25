@@ -5,7 +5,13 @@ const { generateOutputPath } = require('../utils/fileUtils');
 
 async function pdfToWord(filePath) {
   const pdfBuffer = fs.readFileSync(filePath);
-  const data = await pdfParse(pdfBuffer);
+  let data;
+  try {
+    data = await pdfParse(pdfBuffer);
+  } catch (err) {
+    // pdf-parse can fail on some PDFs — fallback with empty text
+    data = { text: '' };
+  }
 
   // Split text into paragraphs by double newlines or single newlines
   const rawText = data.text || '';
