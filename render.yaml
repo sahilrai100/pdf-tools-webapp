@@ -1,0 +1,20 @@
+# One-click deploy: Render dashboard -> New -> Blueprint -> pick this repo
+services:
+  - type: web
+    name: pdfspark
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      # Optional: MongoDB Atlas connection string to enable login/sign-up
+      - key: MONGO_URI
+        sync: false
