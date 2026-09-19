@@ -1,7 +1,7 @@
 # One-click deploy: Render dashboard -> New -> Blueprint -> pick this repo
 services:
   - type: web
-    name: pdfspark
+    name: pdfspark-tools
     runtime: node
     plan: free
     region: singapore
